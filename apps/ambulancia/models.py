@@ -3,9 +3,15 @@ from django.db import models
 
 class ObraSocial(models.Model):
     nombre = models.CharField(max_length=50)
-    precio_km = models.FloatField()
-    precio_ambulancia_dia = models.FloatField()
-    precio_ambulancia_dia_silla = models.FloatField()
+    precio_km = models.DecimalField(max_digits=5,
+                                    decimal_places=2)
+    precio_ambulancia_dia = models.DecimalField(max_digits=5,
+                                                decimal_places=2)
+    precio_ambulancia_dia_silla = models.DecimalField(max_digits=5,
+                                                    decimal_places=2)
+
+    def __str__(self):
+        return str(self.nombre)
 
 
 class Establecimiento(models.Model):
@@ -17,8 +23,11 @@ class Establecimiento(models.Model):
     nombre = models.CharField(max_length=50)
     direccion = models.CharField(max_length=50)
     telefono = models.CharField(max_length=50, null=True, blank=True)
-    hora_entrada = models.CharField(max_length=5)
-    hora_salida = models.CharField(max_length=5)
+    hora_entrada = models.TimeField()
+    hora_salida = models.TimeField()
+
+    def __str__(self):
+        return str(self.nombre)
 
 
 class Pasajero(models.Model):
@@ -47,15 +56,16 @@ class Pasajero(models.Model):
     obra_social = models.ForeignKey(ObraSocial)
     establecimiento = models.ForeignKey(Establecimiento)
     nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
     sexo = models.CharField(max_length=1, choices=SEXO, default='M')
     telefono = models.CharField(max_length=50, null=True, blank=True)
-    apellido = models.CharField(max_length=50)
     direccion = models.CharField(max_length=50)
     nombre_padre = models.CharField(max_length=50, null=True, blank=True)
     tipo_viaje = models.CharField(max_length=10,
                                  choices=TIPO_VIAJE,
                                  default=AMBULANCIA_SILLA)
-    hora_entrada = models.CharField(max_length=50)
-    hora_salida = models.CharField(max_length=50)
+    hora_entrada = models.TimeField()
+    hora_salida = models.TimeField()
 
-
+    def __str__(self):
+        return self.nombre + ' ' + self.apellido
