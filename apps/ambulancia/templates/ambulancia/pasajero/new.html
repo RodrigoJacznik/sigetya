@@ -1,0 +1,25 @@
+{% extends "ambulancia/base.html" %}
+{% load staticfiles %}
+
+{% block cuerpo%}
+    <script src="{% static 'ambulancia/jquery-ui-1.10.4/js/jquery-1.10.2.js' %}"></script>
+
+            <script src="{% static 'ambulancia/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js' %}"></script>
+
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type=submit />
+    </form>
+
+    <script>
+        var establecimientos = {{ establecimientos | safe }}
+        $(function() {
+            $("#id_establecimiento").change(function() {
+                    var e_id = $("#id_establecimiento option:selected").val();
+                    $("#id_hora_entrada").val(establecimientos[e_id - 1].fields.hora_entrada);
+                    $("#id_hora_salida").val(establecimientos[e_id - 1].fields.hora_salida);
+                });
+            })
+    </script>
+{% endblock %}

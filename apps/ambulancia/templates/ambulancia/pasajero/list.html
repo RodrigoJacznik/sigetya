@@ -1,0 +1,29 @@
+{% extends "ambulancia/base.html" %}
+
+{% block cuerpo %}
+<table>
+    <tr>
+        <td>Nombre</td>
+        <td>Apellido</td>
+        <td>Nro Obra Social</td>
+        <td>Direccion</td>
+        <td>Establecimiento</td>
+        <td>Hora Entrada</td>
+        <td>Hora Salida</td>
+    </tr>
+    {% for pasajero in pasajeros %}
+        <tr>
+            <td>{{ pasajero.nombre }}</td>
+            <td>{{ pasajero.apellido }}</td>
+            <td>{{ pasajero.nro_obra_social }}</td>
+            <td>{{ pasajero.direccion }}</td>
+            <td>{{ pasajero.establecimiento }}</td>
+            <td>{{ pasajero.hora_entrada }}</td>
+            <td>{{ pasajero.hora_salida }}</td>
+            <td><a href="{{ pasajero.nro_obra_social }}">Mas Detalles</a></td>
+            <td><a href="{{ pasajero.nro_obra_social }}/edit">Editar</a></td>
+            <td><a href="{{ pasajero.nro_obra_social }}/delete" >Eliminar</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

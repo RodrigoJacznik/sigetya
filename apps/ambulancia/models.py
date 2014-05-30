@@ -3,12 +3,10 @@ from django.db import models
 
 class ObraSocial(models.Model):
     nombre = models.CharField(max_length=50)
-    precio_km = models.DecimalField(max_digits=5,
-                                    decimal_places=2)
-    precio_ambulancia_dia = models.DecimalField(max_digits=5,
-                                                decimal_places=2)
+    precio_km = models.DecimalField(max_digits=5, decimal_places=2)
+    precio_ambulancia_dia = models.DecimalField(max_digits=5, decimal_places=2)
     precio_ambulancia_dia_silla = models.DecimalField(max_digits=5,
-                                                    decimal_places=2)
+         decimal_places=2)
 
     def __str__(self):
         return str(self.nombre)
@@ -68,4 +66,4 @@ class Pasajero(models.Model):
     hora_salida = models.TimeField()
 
     def __str__(self):
-        return self.nombre + ' ' + self.apellido
+        return  self.apellido + ' ' + self.nombre

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Planilla de asistencia</title>
+        <style>
+            body {
+                font-familt: Sans-serif;
+                font-size: 13px;
+                }
+
+            table {
+                border-collapse: collapse;
+                width: 580px;
+                text-align: center;
+                }
+
+            td {
+                border: 1px solid black;
+                padding: 3px;
+                font-size: 12px;
+                }
+
+            tr {
+                margin: 0.5px;
+                }
+
+            #datos {
+                width: 580px;
+                }
+
+            #datos div {
+                margin-bottom: -10px;
+                margin-top: -10px;
+                }
+
+            #datos div p {
+                display: inline-block
+                }
+
+            .izq {
+                margin-right: 50px;
+                }
+
+            #title {
+                width: 580px;
+                text-align: center;
+                display: inline-block;
+                border: 1px solid black;
+                margin-bottom: 0px;
+                }
+
+            @media print {
+                .page-break{
+                    page-break-before: always;
+                }
+            }
+
+    </style>
+    </head>
+    <body>
+        {% for pasajero in pasajeros %}
+            <p id="title">PLANILLA DE ASISTENCIA DIARIA - CONFORMIDAD DEL AFILIADO</p>
+            <div id="datos">
+                <p>NOMBRE DEL AFILIADO: {{ pasajero.apellido }} {{ pasajero.nombre }}</p>
+                <div>
+                    <p class="izq">N° AFILIADO: {{ pasajero.nro_obra_social }}</p>
+                    <p>MES DE PRESENTACIÓN: {{ month }}</p>
+                </div>
+                <div>
+                    <p class="izq">NOMBRE DEL PROFESIONAL: {{ responsable }}</p>
+                    <p>MATRICULA: ------- </p>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <td>DÍA</td>
+                    <td>ENTRADA</td>
+                    <td>SALIDA</td>
+                    <td>FIRMA DEL PROFESIONAL</td>
+                    <td>FIRMA DEL AFILIADO</td>
+                </tr>
+                {% for day in days %}
+                    <tr>
+                            <td>{{ forloop.counter }}</td>
+                        {% if day %}
+                            <td>{{ pasajero.hora_entrada | date:"G:i" }}</td>
+                            <td>{{ pasajero.hora_salida | date:"G:i" }}</td>
+                            <td>{{ responsable | upper}}</td>
+                            <td></td>
+                        {% else %}
+                            <td>------</td>
+                            <td>------</td>
+                            <td>-------------</td>
+                            <td>-------------</td>
+                        {% endif %}
+                    </tr>
+
+                {% endfor %}
+            </table>
+
+            <div id="datos">
+                <p>FIRMA DEL AFILIADO O FAMILAR: ____________________</p>
+                <p>ACLARACIÓN: ____________________</p>
+                <p>N° DOCUMENTO: ____________________</p>
+                <p>GRADO DE PARENTESCO: ____________________</p>
+            </div>
+
+            <div class="page-break"></div>
+        {% endfor %}
+    </body>
+</html>
