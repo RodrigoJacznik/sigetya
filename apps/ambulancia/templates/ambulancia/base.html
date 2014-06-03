@@ -22,26 +22,26 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">Pasajero<b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                            <li><a href="#">Listar Pasajeros</a></li>
-                            <li><a href="#">Alta</a></li>
+                            <li><a href="{% url 'list_pasajero' %}">Listar Pasajeros</a></li>
+                            <li><a href="{% url 'new_pasajero' %}">Alta</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Planilla de Asistencia</a></li>
-                            <li><a href="#">Conformidad</a></li>
-                            <li><a href="#">Presupuesto</a></li>
+                            <li><a href="{% url 'asistencia' %}">Planilla de Asistencia</a></li>
+                            <li><a href="{% url 'conformidad' %}">Conformidad</a></li>
+                            <li><a href="{% url 'presupuesto' %}">Presupuesto</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">Establecimiento<b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                            <li><a href="#">Listar Establecimientos</a></li>
-                            <li><a href="#">Alta</a></li>
+                            <li><a href="{% url 'list_establecimiento' %}">Listar Establecimientos</a></li>
+                            <li><a href="{% url 'new_establecimiento' %}">Alta</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">Obra Social<b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                            <li><a href="#">Listar Obras Sociales</a></li>
-                            <li><a href="#">Alta</a></li>
+                            <li><a href="{% url 'list_obra_social' %}">Listar Obras Sociales</a></li>
+                            <li><a href="{% url 'new_obra_social' %}">Alta</a></li>
                         </ul>
                     </li>
                 </ul>

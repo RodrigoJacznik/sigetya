@@ -12,13 +12,14 @@ from .forms import PresentismoForm
 from .forms import PasajeroForm
 from .forms import ObraSocialForm
 from .forms import EstablecimientoForm
+from .forms import ConformidadForm
 
 
 MONTHS = {1: ("Enero", 31), 2: ("Febrero", 28),
         3: ("Marzo", 31), 4: ("Abril", 30), 5: ("Mayo", 31),
         6: ("Junio", 30), 7: ("Julio", 31), 8: ("Agosto", 31),
         9: ("Septiembre", 30), 10: ("Octubre", 31), 11: ("Noviembre", 30),
-        12: ("Diciembre",     31)}
+        12: ("Diciembre", 31)}
 
 
 def getMonth(date):
@@ -37,11 +38,11 @@ def index(request):
     return render(request, 'ambulancia/index.html')
 
 
-def presentismo(request):
+def asistencia(request):
     if request.method == 'POST':
         form = PresentismoForm(request.POST)
         if form.is_valid():
-            dates = form.cleaned_data['date'].split(',')
+            dates = form.cleaned_data['dates'].split(',')
             days = []
 
             month = getMonth(dates[0])
@@ -57,10 +58,30 @@ def presentismo(request):
 
             context = {'month': month, 'days': days,
                 'pasajeros': form.cleaned_data['pasajeros']}
-            return render(request, 'ambulancia/presentismo.html', context)
+            return render(request, 'ambulancia/asistencia.html', context)
     else:
         form = PresentismoForm()
-    return render(request, 'ambulancia/new_presentismo.html', {'form': form})
+    return render(request, 'ambulancia/new_asistencia.html', {'form': form})
+
+
+def conformidad(request):
+    if request.method == 'POST':
+        form = ConformidadForm(request.POST)
+        if form.is_valid():
+            dia_emision = form.cleaned_data['dia_emision']
+            pasajeros = form.cleaned_data['pasajero']
+
+            context = {'dia_emision': dia_emision,
+                        'pasajeros': pasajeros,
+                        }
+            return render(request, 'ambulancia/conformidad.html', context)
+    else:
+        form = ConformidadForm()
+    return render(request, 'ambulancia/new_conformidad.html', {'form': form})
+
+
+def presupuesto(request):
+    pass
 
 # ---------------------------- Pasajeros ---------------------------------
 
@@ -84,7 +105,7 @@ def edit_pasajero(request, id):
     p = get_object_or_404(Pasajero, pk=id)
     form = PasajeroForm(request.POST or None, instance=p)
     if form.is_valid():
-        pasajero = form.save()
+        form.save()
         return redirect(reverse("index"))
 
     return render(request, 'ambulancia/pasajero/new.html', {'form': form})
@@ -115,6 +136,10 @@ def new_obra_social(request):
 
     return render(request, 'ambulancia/obra_social/new.html', {'form': form})
 
+
+def list_obra_social(request):
+    pass
+
 # ---------------------------- Establecimiento ----------------------------
 
 
@@ -130,3 +155,7 @@ def new_establecimiento(request):
     return render(request,
                  'ambulancia/establecimiento/new.html',
                  {'form': form})
+
+
+def list_establecimiento(request):
+    pass

@@ -30,8 +30,19 @@ class Establecimiento(models.Model):
 
 class Responsable(models.Model):
 
+    AMBULANCIA = 'A'
+    TRASPORTE = 'T'
+
+    TIPO_TRASPORTE = (
+        (AMBULANCIA, 'Ambulancia'),
+        (TRASPORTE, 'Trasporte')
+        )
+
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
+    dni = models.CharField(max_length=10)
+    tipo_trasporte = models.CharField(max_length=1, choices=TIPO_TRASPORTE,
+         default='A')
 
     def __str__(self):
         return str(self.apellido + " " + self.nombre)

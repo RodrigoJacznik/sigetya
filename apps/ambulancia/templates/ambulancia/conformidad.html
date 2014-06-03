@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Conformidad</title>
+        <style>
+            p {
+                font-family: Sans-serif;
+                font-size: 22px;
+            }
+
+            #fecha {
+                text-align: right;
+                margin: 50px 0 50px 0;
+            }
+
+            @media print {
+                .page-break{
+                    page-break-before: always;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        {% for pasajero in pasajeros %}
+            <div id="fecha">
+                <p>La Plata, {{ dia_emision | date:"j" }} de {{ dia_emision | date:"F" }} de {{ dia_emision | date:"Y" }} </p>
+            </div>
+            <div id="cuerpo">
+                <p>Por la presente doy conformidad al traslado de mi
+                 hij{% if pasajero.sexo == 'M' %}o{% else %}a{% endif %} {{ pasajero | upper }}
+                 por
+                 {% if pasajero.responsable.tipo_trasporte == 'A' %}
+                     la ambulancia
+                 {% else %}
+                     el trasporte
+                 {% endif %}
+                 de {{ pasajero.responsable | upper }} con DNI {{ pasajero.responsable.dni }}</p>
+            </div>
+            <div class="page-break"></div>
+        {% endfor %}
+    </body>
+</html>

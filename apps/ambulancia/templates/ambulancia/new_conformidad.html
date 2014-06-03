@@ -1,0 +1,33 @@
+{% extends 'ambulancia/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
+<link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+{% endblock %}
+
+{% block cuerpo %}
+    <form method="POST"> {% csrf_token %}
+        {{ form | crispy }}
+        <div class="control-group">
+            <label class="control-label">Fecha de Emision</label>
+            <div id="datepicker"></div>
+        <div>
+        <button class="btn btn-primary" type="submit">Crear</button>
+    </form>
+
+    <script src="{% static 'ambulancia/js/dates.js' %}"></script>
+    <script src="{% static 'js/jquery.ui.datepicker.js' %}"></script>
+
+
+    <script type="text/javascript">
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                inline: true,
+                altField: '#id_dia_emision',
+                dateFormat: "d/m/yy",
+            });
+        });
+    </script>
+{% endblock %}
