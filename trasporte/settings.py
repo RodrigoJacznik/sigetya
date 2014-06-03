@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.ambulancia',
-    'south'
+    'south',
+    'crispy_forms'
 )
 
 MIDDLEWARE_CLASSES = (

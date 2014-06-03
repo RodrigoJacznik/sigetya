@@ -1,0 +1,16 @@
+.asteriskField {
+    display: none;
+}
+
+form button {
+    margin: 15px 10px 0 0;
+}
+
+label.checkbox {
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+}
+
+.control-group {
+    margin: 25px 0 0 0;
+}

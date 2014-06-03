@@ -15,9 +15,10 @@ from .forms import EstablecimientoForm
 
 
 MONTHS = {1: ("Enero", 31), 2: ("Febrero", 28),
-        3: "Marzo", 4: "Abril", 5: ("Mayo", 31),
-        6: "Junio", 7: "Julio", 8: "Agosto", 9: "Septiembre",
-        10: "Octubre", 11: "Noviembre", 12: "Diciembre"}
+        3: ("Marzo", 31), 4: ("Abril", 30), 5: ("Mayo", 31),
+        6: ("Junio", 30), 7: ("Julio", 31), 8: ("Agosto", 31),
+        9: ("Septiembre", 30), 10: ("Octubre", 31), 11: ("Noviembre", 30),
+        12: ("Diciembre",     31)}
 
 
 def getMonth(date):
@@ -55,7 +56,6 @@ def presentismo(request):
                     days.append(False)
 
             context = {'month': month, 'days': days,
-                'responsable': "Piccardo Nancy",
                 'pasajeros': form.cleaned_data['pasajeros']}
             return render(request, 'ambulancia/presentismo.html', context)
     else:
@@ -70,7 +70,7 @@ def new_pasajero(request):
         form = PasajeroForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(redirect("index"))
+            return redirect(reverse("index"))
     else:
         establecimientos = serializers.serialize('json',
             Establecimiento.objects.all())

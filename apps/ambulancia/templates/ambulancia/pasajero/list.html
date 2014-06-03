@@ -1,12 +1,12 @@
 {% extends "ambulancia/base.html" %}
 
 {% block cuerpo %}
-<table>
+<table class="table">
     <tr>
         <td>Nombre</td>
         <td>Apellido</td>
-        <td>Nro Obra Social</td>
         <td>Direccion</td>
+        <td>Responsable</td>
         <td>Establecimiento</td>
         <td>Hora Entrada</td>
         <td>Hora Salida</td>
@@ -15,8 +15,8 @@
         <tr>
             <td>{{ pasajero.nombre }}</td>
             <td>{{ pasajero.apellido }}</td>
-            <td>{{ pasajero.nro_obra_social }}</td>
             <td>{{ pasajero.direccion }}</td>
+            <td>{{ pasajero.responsable }}</td>
             <td>{{ pasajero.establecimiento }}</td>
             <td>{{ pasajero.hora_entrada }}</td>
             <td>{{ pasajero.hora_salida }}</td>

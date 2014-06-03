@@ -5,10 +5,11 @@ from .models import Establecimiento
 
 
 class PresentismoForm(forms.Form):
-    date = forms.CharField(widget=forms.HiddenInput)
+    date = forms.CharField(widget=forms.HiddenInput, required=True)
     pasajeros = forms.ModelMultipleChoiceField(
         queryset=Pasajero.objects.all().order_by("apellido"),
-        widget=forms.CheckboxSelectMultiple)
+        widget=forms.CheckboxSelectMultiple,
+        required=True)
 
 
 class PasajeroForm(forms.ModelForm):

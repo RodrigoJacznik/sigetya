@@ -1,17 +1,20 @@
 {% extends "ambulancia/base.html" %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Alta de Pasajero
+{% endblock %}
 
 {% block cuerpo%}
-    <script src="{% static 'ambulancia/jquery-ui-1.10.4/js/jquery-1.10.2.js' %}"></script>
-
-            <script src="{% static 'ambulancia/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js' %}"></script>
-
     <form method="POST" >
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type=submit />
+        {{ form|crispy }}
+        <button type=submit class="btn">Aceptar</button>
     </form>
+{% endblock %}
 
+{% block extra_js %}
     <script>
         var establecimientos = {{ establecimientos | safe }}
         $(function() {

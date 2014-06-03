@@ -61,13 +61,13 @@
         {% for pasajero in pasajeros %}
             <p id="title">PLANILLA DE ASISTENCIA DIARIA - CONFORMIDAD DEL AFILIADO</p>
             <div id="datos">
-                <p>NOMBRE DEL AFILIADO: {{ pasajero.apellido }} {{ pasajero.nombre }}</p>
+                <p>NOMBRE DEL AFILIADO: {{ pasajero.apellido | upper }} {{ pasajero.nombre | upper }}</p>
                 <div>
                     <p class="izq">N° AFILIADO: {{ pasajero.nro_obra_social }}</p>
                     <p>MES DE PRESENTACIÓN: {{ month }}</p>
                 </div>
                 <div>
-                    <p class="izq">NOMBRE DEL PROFESIONAL: {{ responsable }}</p>
+                    <p class="izq">NOMBRE DEL PROFESIONAL: {{ pasajero.responsable }}</p>
                     <p>MATRICULA: ------- </p>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                         {% if day %}
                             <td>{{ pasajero.hora_entrada | date:"G:i" }}</td>
                             <td>{{ pasajero.hora_salida | date:"G:i" }}</td>
-                            <td>{{ responsable | upper}}</td>
+                            <td>{{ pasajero.responsable | upper}}</td>
                             <td></td>
                         {% else %}
                             <td>------</td>
@@ -100,10 +100,10 @@
             </table>
 
             <div id="datos">
-                <p>FIRMA DEL AFILIADO O FAMILAR: ____________________</p>
-                <p>ACLARACIÓN: ____________________</p>
-                <p>N° DOCUMENTO: ____________________</p>
-                <p>GRADO DE PARENTESCO: ____________________</p>
+                <p>FIRMA DEL AFILIADO O FAMILAR: _________________________</p>
+                <p>ACLARACIÓN: _________________________________________</p>
+                <p>N° DOCUMENTO: _______________________________________</p>
+                <p>GRADO DE PARENTESCO: ________________________________</p>
             </div>
 
             <div class="page-break"></div>

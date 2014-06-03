@@ -28,6 +28,15 @@ class Establecimiento(models.Model):
         return str(self.nombre)
 
 
+class Responsable(models.Model):
+
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+
+    def __str__(self):
+        return str(self.apellido + " " + self.nombre)
+
+
 class Pasajero(models.Model):
     """Representacion de un pasajero de la ambulancia.
     hora_entrada y hora_salida son redundantes con los de
@@ -52,6 +61,7 @@ class Pasajero(models.Model):
 
     nro_obra_social = models.CharField(max_length=20, primary_key=True)
     obra_social = models.ForeignKey(ObraSocial)
+    responsable = models.ForeignKey(Responsable)
     establecimiento = models.ForeignKey(Establecimiento)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
