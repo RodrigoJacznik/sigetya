@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Presupuesto</title>
+    </head>
+    <body>
+        <img src="{% static 'ambulancia/img/cabecera.png' %}"></img>
+        <div>
+            La Plata
+        </div>
+        <h1>Presupuesto</h1>
+        <div>
+            <p>{{ alumno | upper }}</p>
+        </div>
+        <div>
+            Por el traslado de {% if pasajero.sexo == 'M' %} del alumno {% else %} de la alumna
+            {% endif %} {{ alumno | upper }} desde {{ alumno.direccion }} hasta
+            {{ alumno.escuela.direccion }} ( {{ alumno.escuela }} ) y de regreso a su domicilo.
+            De Lunes a Viernes, de {{ mes_desde }} a {{ mes_hasta }}.
+            {{ if alumno.tipo_viaje == 'AS' }} Traslado en silla de rueda {% endif %}.
+            {% if alumno.obra_social == 'IOMA' %}
+            Según valor IOMA:
+            {% endif %}
+        </div>
+    </body>
+</html>

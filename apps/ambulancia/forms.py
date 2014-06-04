@@ -4,17 +4,26 @@ from .models import ObraSocial
 from .models import Establecimiento
 
 
-class PresentismoForm(forms.Form):
-    dates = forms.CharField(widget=forms.HiddenInput, required=True)
+class PasajeroBaseForm(forms.Form):
     pasajeros = forms.ModelMultipleChoiceField(
         queryset=Pasajero.objects.all().order_by("apellido"),
         widget=forms.CheckboxSelectMultiple,
         required=True)
 
 
-class ConformidadForm(forms.Form):
+class PresentismoForm(PasajeroBaseForm):
+    dates = forms.CharField(widget=forms.HiddenInput, required=True)
+
+
+class ConformidadForm(PasajeroBaseForm):
     dia_emision = forms.DateField(widget=forms.HiddenInput)
-    pasajero = forms.ModelMultipleChoiceField(
+
+
+class PresupuestoForm(forms.Form):
+    dia_emision = forms.DateField()
+    mes_inicio = forms.DateField()
+    mes_fin = forms.DateField()
+    pasajeros = forms.ModelChoiceField(
         queryset=Pasajero.objects.all().order_by("apellido"),
         required=True)
 

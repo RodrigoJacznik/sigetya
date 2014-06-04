@@ -3,8 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
-<link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
+    <link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+{% endblock %}
+
+{% block header %}
+    Conformidad
 {% endblock %}
 
 {% block cuerpo %}

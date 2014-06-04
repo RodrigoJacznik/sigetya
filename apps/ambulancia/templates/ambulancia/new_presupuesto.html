@@ -1,0 +1,14 @@
+{% extends "ambulancia/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block header %}
+    Presupuesto
+{% endblock %}
+
+{% block cuerpo %}
+<form method="POST">{% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+{% endblock %}

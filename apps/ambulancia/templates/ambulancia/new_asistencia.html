@@ -7,14 +7,15 @@ Presentismo
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
-<link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
+    <link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+{% endblock %}
+
+{% block header %}
+    Planilla de Asistencia diaria
 {% endblock %}
 
 {% block cuerpo %}
-    <div class="page-header">
-        <h1>Planilla de Asistencia diaria</h1>
-    </div>
     {% if form.pasajeros %}
         <form method="POST">{% csrf_token %}
 

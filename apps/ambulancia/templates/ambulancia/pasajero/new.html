@@ -5,12 +5,15 @@
 {% block title %}
     Alta de Pasajero
 {% endblock %}
+{% block header %}
+    Alta de Pasajero
+{% endblock %}
 
 {% block cuerpo%}
     <form method="POST" >
         {% csrf_token %}
-        {{ form|crispy }}
-        <button type=submit class="btn">Aceptar</button>
+        {{ form | crispy }}
+        <button type='submit' class="btn btn-primary">Aceptar</button>
     </form>
 {% endblock %}
 

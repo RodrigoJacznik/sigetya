@@ -69,7 +69,7 @@ def conformidad(request):
         form = ConformidadForm(request.POST)
         if form.is_valid():
             dia_emision = form.cleaned_data['dia_emision']
-            pasajeros = form.cleaned_data['pasajero']
+            pasajeros = form.cleaned_data['pasajeros']
 
             context = {'dia_emision': dia_emision,
                         'pasajeros': pasajeros,

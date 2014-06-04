@@ -1,29 +1,56 @@
 {% extends "ambulancia/base.html" %}
 
+{% block header %}
+    Lista de Pasajeros
+{% endblock %}
+
 {% block cuerpo %}
-<table class="table">
-    <tr>
-        <td>Nombre</td>
-        <td>Apellido</td>
-        <td>Direccion</td>
-        <td>Responsable</td>
-        <td>Establecimiento</td>
-        <td>Hora Entrada</td>
-        <td>Hora Salida</td>
-    </tr>
-    {% for pasajero in pasajeros %}
-        <tr>
-            <td>{{ pasajero.nombre }}</td>
-            <td>{{ pasajero.apellido }}</td>
-            <td>{{ pasajero.direccion }}</td>
-            <td>{{ pasajero.responsable }}</td>
-            <td>{{ pasajero.establecimiento }}</td>
-            <td>{{ pasajero.hora_entrada }}</td>
-            <td>{{ pasajero.hora_salida }}</td>
-            <td><a href="{{ pasajero.nro_obra_social }}">Mas Detalles</a></td>
-            <td><a href="{{ pasajero.nro_obra_social }}/edit">Editar</a></td>
-            <td><a href="{{ pasajero.nro_obra_social }}/delete" >Eliminar</a></td>
-        </tr>
-    {% endfor %}
-</table>
+    {% if pasajeros %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pasajero</th>
+                <th>Direccion</th>
+                <th>Responsable</th>
+                <th>Establecimiento</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pasajero in pasajeros %}
+            <tr>
+                <td>{{ pasajero.apellido }} {{ pasajero.nombre }}</td>
+                <td>{{ pasajero.direccion }}</td>
+                <td>{{ pasajero.responsable }}</td>
+                <td>{{ pasajero.establecimiento }}</td>
+                <td>{{ pasajero.hora_entrada | date:"H:i" }}</td>
+                <td>{{ pasajero.hora_salida | date:"H:i" }}</td>
+                <td><a class="btn btn-info" href="{{ pasajero.nro_obra_social }}">Mas Detalles</a></td>
+                <td><a class="btn btn-warning" href="{{ pasajero.nro_obra_social }}/edit">Editar</a></td>
+                <td><a class="btn btn-danger" href="{{ pasajero.nro_obra_social }}/delete" >Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="jumbotron">
+            <h2>No hay pasajeros</h2>
+            <h3>De de alta un pasajero para poder generar su planillas de asistencia</h3>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $("tbody tr").hover(
+            function() {
+                 $(this).toggleClass("active")
+            },
+            function() {
+                 $(this).toggleClass("active")
+            }
+        );
+    </script>
 {% endblock %}
