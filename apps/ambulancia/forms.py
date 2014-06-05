@@ -23,7 +23,7 @@ class PresupuestoForm(forms.Form):
     dia_emision = forms.DateField()
     mes_inicio = forms.DateField()
     mes_fin = forms.DateField()
-    pasajeros = forms.ModelChoiceField(
+    pasajero = forms.ModelChoiceField(
         queryset=Pasajero.objects.all().order_by("apellido"),
         required=True)
 

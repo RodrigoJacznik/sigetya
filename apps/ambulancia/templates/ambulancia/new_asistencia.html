@@ -17,7 +17,7 @@ Presentismo
 
 {% block cuerpo %}
     {% if form.pasajeros %}
-        <form method="POST">{% csrf_token %}
+        <form method="POST" action="{% url 'asistencia' %}">{% csrf_token %}
 
             {{ form|crispy }}
             <input type="checkbox" id="selectall"/> Seleccionar Todos
@@ -25,7 +25,7 @@ Presentismo
                 <label class="control-label">Días que no asistió al establecimiento</label>
                 <div id="datepicker"></div>
             <div>
-            <button type='submit' class="btn btn-primary">Aceptar</button>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
         </form>
     {% else %}
 
@@ -48,7 +48,7 @@ Presentismo
         $(function() {
             $( "#datepicker" ).multiDatesPicker({
                 inline: true,
-                altField: '#id_date',
+                altField: '#id_dates',
                 dateFormat: "d/m/yy",
                 changeMonth: true,
                 changeYear: true,

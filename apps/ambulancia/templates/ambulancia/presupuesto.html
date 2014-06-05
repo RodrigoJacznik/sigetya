@@ -4,25 +4,46 @@
 <html>
     <head>
         <title>Presupuesto</title>
+        <style>
+            body {
+                font-family: Sans-serif;
+            }
+
+            #fecha {
+                text-align: right;
+            }
+
+            #titulo {
+                text-align: center;
+            }
+
+            #valor {
+                margin-left: 50px;
+            }
+        </style>
     </head>
     <body>
         <img src="{% static 'ambulancia/img/cabecera.png' %}"></img>
         <div>
-            La Plata
+              <p id="fecha">La Plata, {{ dia_emision | date:"j" }} de {{ dia_emision | date:"F" }} de {{ dia_emision | date:"Y" }} </p>
         </div>
-        <h1>Presupuesto</h1>
+        <h1 id="titulo">Presupuesto</h1>
         <div>
-            <p>{{ alumno | upper }}</p>
+            <p><b>{{ pasajero | upper }}</b></p>
+        </div>
+        <div id="cuerpo">
+            <p>Por el traslado {% if pasajero.sexo == "M" %} del alumno {% else %} de la alumna
+            {% endif %} <b>{{ pasajero | upper }}</b> desde {{ pasajero.direccion }} hasta
+            {{ pasajero.escuela.direccion }} ( {{ pasajero.escuela }} ) y de regreso a su domicilo.
+            De Lunes a Viernes, de {{ mes_inicio | date:"F"}} a {{ mes_fin | date:"F"}}.
+            {% if pasajero.tipo_viaje == "AS" %} Traslado en silla de rueda {% endif %}</p>
         </div>
         <div>
-            Por el traslado de {% if pasajero.sexo == 'M' %} del alumno {% else %} de la alumna
-            {% endif %} {{ alumno | upper }} desde {{ alumno.direccion }} hasta
-            {{ alumno.escuela.direccion }} ( {{ alumno.escuela }} ) y de regreso a su domicilo.
-            De Lunes a Viernes, de {{ mes_desde }} a {{ mes_hasta }}.
-            {{ if alumno.tipo_viaje == 'AS' }} Traslado en silla de rueda {% endif %}.
-            {% if alumno.obra_social == 'IOMA' %}
-            Según valor IOMA:
-            {% endif %}
+            <p>Según valor {{  pasajero.obra_social }}:</p>
+            <div id="valor">
+                <p>Valor por dia: {{ valor_dia }}</p>
+                <p>Valor por mes: {{ valor_mes }}</p>
+            </div>
         </div>
     </body>
 </html>

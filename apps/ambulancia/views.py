@@ -13,6 +13,7 @@ from .forms import PasajeroForm
 from .forms import ObraSocialForm
 from .forms import EstablecimientoForm
 from .forms import ConformidadForm
+from .forms import PresupuestoForm
 
 
 MONTHS = {1: ("Enero", 31), 2: ("Febrero", 28),
@@ -81,7 +82,34 @@ def conformidad(request):
 
 
 def presupuesto(request):
-    pass
+    if request.method == 'POST':
+        form = PresupuestoForm(request.POST)
+        if form.is_valid():
+            pasajero = form.cleaned_data['pasajero']
+            dia_emision = form.cleaned_data['dia_emision']
+            mes_inicio = form.cleaned_data['mes_inicio']
+            mes_fin = form.cleaned_data['mes_fin']
+
+            if pasajero.tipo_viaje == 'N':
+                valor_dia = pasajero.obra_social.precio_km
+            elif pasajero.tipo_viaje == 'A':
+                valor_dia = pasajero.obra_social.precio_ambulancia_dia
+            else:
+                valor_dia = pasajero.obra_social.\
+                                precio_ambulancia_dia_con_silla
+
+            context = {'pasajero': pasajero,
+                    'dia_emision': dia_emision,
+                    'mes_inicio': mes_inicio,
+                    'mes_fin': mes_fin,
+                    'valor_dia': valor_dia,
+                    'valor_mes': valor_dia * 22
+                    }
+
+            return render(request, 'ambulancia/presupuesto.html', context)
+    else:
+        form = PresupuestoForm()
+    return render(request, 'ambulancia/new_presupuesto.html', {'form': form})
 
 # ---------------------------- Pasajeros ---------------------------------
 
