@@ -7,6 +7,9 @@
         <style>
             body {
                 font-family: Sans-serif;
+                width: 21cm;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             #fecha {
@@ -20,10 +23,14 @@
             #valor {
                 margin-left: 50px;
             }
+
+            img {
+                align: middle;
+            }
         </style>
     </head>
     <body>
-        <img src="{% static 'ambulancia/img/cabecera.png' %}"></img>
+        <img src="{% static 'ambulancia/img/encabezado.svg' %}"></img>
         <div>
               <p id="fecha">La Plata, {{ dia_emision | date:"j" }} de {{ dia_emision | date:"F" }} de {{ dia_emision | date:"Y" }} </p>
         </div>
