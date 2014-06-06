@@ -36,7 +36,7 @@ def getDay(date):
 
 
 def index(request):
-    return render(request, 'ambulancia/index.html')
+    return render(request, 'gestion_pasajeros/index.html')
 
 
 def asistencia(request):
@@ -59,10 +59,12 @@ def asistencia(request):
 
             context = {'month': month, 'days': days,
                 'pasajeros': form.cleaned_data['pasajeros']}
-            return render(request, 'ambulancia/asistencia.html', context)
+            return render(request,
+                'gestion_pasajeros/asistencia.html', context)
     else:
         form = PresentismoForm()
-    return render(request, 'ambulancia/new_asistencia.html', {'form': form})
+    return render(request, 'gestion_pasajeros/new_asistencia.html',
+                 {'form': form})
 
 
 def conformidad(request):
@@ -75,10 +77,12 @@ def conformidad(request):
             context = {'fecha_emision': fecha_emision,
                         'pasajeros': pasajeros,
                         }
-            return render(request, 'ambulancia/conformidad.html', context)
+            return render(request, 'gestion_pasajeros/conformidad.html',
+                 context)
     else:
         form = ConformidadForm()
-    return render(request, 'ambulancia/new_conformidad.html', {'form': form})
+    return render(request, 'gestion_pasajeros/new_conformidad.html',
+         {'form': form})
 
 
 def presupuesto(request):
@@ -106,10 +110,12 @@ def presupuesto(request):
                     'valor_mes': valor_dia * 22
                     }
 
-            return render(request, 'ambulancia/presupuesto.html', context)
+            return render(request, 'gestion_pasajeros/presupuesto.html',
+                 context)
     else:
         form = PresupuestoForm()
-    return render(request, 'ambulancia/new_presupuesto.html', {'form': form})
+    return render(request, 'gestion_pasajeros/new_presupuesto.html',
+         {'form': form})
 
 # ---------------------------- Pasajeros ---------------------------------
 
@@ -125,7 +131,7 @@ def new_pasajero(request):
             Establecimiento.objects.all())
         form = PasajeroForm()
 
-    return render(request, 'ambulancia/pasajero/new.html', {'form': form,
+    return render(request, 'gestion_pasajeros/pasajero/new.html', {'form': form,
         'establecimientos': establecimientos})
 
 
@@ -136,12 +142,13 @@ def edit_pasajero(request, id):
         form.save()
         return redirect(reverse("index"))
 
-    return render(request, 'ambulancia/pasajero/new.html', {'form': form})
+    return render(request, 'gestion_pasajeros/pasajero/new.html',
+         {'form': form})
 
 
 def list_pasajeros(request):
     return render(request,
-                 'ambulancia/pasajero/list.html',
+                 'gestion_pasajeros/pasajero/list.html',
                  {'pasajeros': Pasajero.objects.all()})
 
 
@@ -162,7 +169,8 @@ def new_obra_social(request):
     else:
         form = ObraSocialForm()
 
-    return render(request, 'ambulancia/obra_social/new.html', {'form': form})
+    return render(request, 'gestion_pasajeros/obra_social/new.html',
+         {'form': form})
 
 
 def list_obra_social(request):
@@ -181,7 +189,7 @@ def new_establecimiento(request):
         form = EstablecimientoForm()
 
     return render(request,
-                 'ambulancia/establecimiento/new.html',
+                 'gestion_pasajeros/establecimiento/new.html',
                  {'form': form})
 
 

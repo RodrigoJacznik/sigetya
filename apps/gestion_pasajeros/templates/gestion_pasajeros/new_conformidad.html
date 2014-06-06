@@ -1,4 +1,4 @@
-{% extends 'ambulancia/base.html' %}
+{% extends 'gestion_pasajeros/base.html' %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
@@ -8,7 +8,7 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
-    <link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'gestion_pasajeros/css/forms.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -32,6 +32,6 @@
 {% block extra_js %}
 
     <script src="{% static 'js/jquery.ui.datepicker.js' %}"></script>
-    <script src="{% static 'ambulancia/js/select_all.js' %}"></script>
-    <script src="{% static 'ambulancia/js/conformismo_calendar.js' %}"></script>
+    <script src="{% static 'gestion_pasajeros/js/select_all.js' %}"></script>
+    <script src="{% static 'gestion_pasajeros/js/conformismo_calendar.js' %}"></script>
 {% endblock %}

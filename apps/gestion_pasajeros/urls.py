@@ -1,6 +1,6 @@
 from django.conf.urls import url, patterns
 
-urlpatterns = patterns('apps.ambulancia.views',
+urlpatterns = patterns('apps.gestion_pasajeros.views',
     url(r'^$', 'index', name='index'),
     url(r'^asistencia/$', 'asistencia', name='asistencia'),
     url(r'^conformidad/$', 'conformidad', name='conformidad'),

@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.ambulancia',
+    'apps.gestion_pasajeros',
     'south',
     'crispy_forms'
 )
@@ -50,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'trasporte.urls'
+ROOT_URLCONF = 'sigetya.urls'
 
-WSGI_APPLICATION = 'trasporte.wsgi.application'
+WSGI_APPLICATION = 'sigetya.wsgi.application'
 
 
 # Database

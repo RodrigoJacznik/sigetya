@@ -10,5 +10,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('apps.ambulancia.urls'))
+    url(r'^', include('apps.gestion_pasajeros.urls'))
 )

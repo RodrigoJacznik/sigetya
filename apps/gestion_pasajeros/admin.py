@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.ambulancia.models import (ObraSocial, Establecimiento,
+from apps.gestion_pasajeros.models import (ObraSocial, Establecimiento,
                                    Pasajero, Responsable)
 
 
