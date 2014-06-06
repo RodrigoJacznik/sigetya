@@ -1,6 +1,17 @@
 {% extends "ambulancia/base.html" %}
+{% load staticfiles %}
+
 {% load crispy_forms_tags %}
 
+
+{% block title %}
+    Presupuesto
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
+    <link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
+{% endblock %}
 
 {% block header %}
     Presupuesto
@@ -9,6 +20,30 @@
 {% block cuerpo %}
 <form method="POST">{% csrf_token %}
     {{ form | crispy }}
+
+    <div class="container">
+        <div class="col-xs-4 control-group">
+            <label class="control-label">Fecha de Emision</label>
+            <div id="fecha_emision"></div>
+        </div>
+
+        <div class="col-xs-4 control-group">
+            <label class="control-label">Mes de Inicio</label>
+            <div id="mes_inicio"></div>
+        </div>
+
+        <div class="col-xs-4 control-group">
+            <label class="control-label">Mes de Finalización</label>
+            <div id="mes_fin"></div>
+        </div>
+    </div>
+
+
     <button type="submit" class="btn btn-primary">Crear</button>
 </form>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/jquery.ui.datepicker.js' %}"></script>
+    <script src="{% static 'ambulancia/js/presupuesto_calendar.js' %}"></script>
 {% endblock %}

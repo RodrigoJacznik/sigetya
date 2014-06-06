@@ -2,6 +2,10 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    Conformidad
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.css' %}">
     <link rel="stylesheet" href="{% static 'ambulancia/css/forms.css' %}">
@@ -14,24 +18,20 @@
 {% block cuerpo %}
     <form method="POST"> {% csrf_token %}
         {{ form | crispy }}
+        <input type="checkbox" id="selectall"/> Seleccionar Todos
+
         <div class="control-group">
             <label class="control-label">Fecha de Emision</label>
-            <div id="datepicker"></div>
-        <div>
+            <div id="fecha_emision"></div>
+        </div>
         <button class="btn btn-primary" type="submit">Crear</button>
     </form>
 
-    <script src="{% static 'ambulancia/js/dates.js' %}"></script>
+{% endblock %}
+
+{% block extra_js %}
+
     <script src="{% static 'js/jquery.ui.datepicker.js' %}"></script>
-
-
-    <script type="text/javascript">
-        $(function() {
-            $( "#datepicker" ).datepicker({
-                inline: true,
-                altField: '#id_dia_emision',
-                dateFormat: "d/m/yy",
-            });
-        });
-    </script>
+    <script src="{% static 'ambulancia/js/select_all.js' %}"></script>
+    <script src="{% static 'ambulancia/js/conformismo_calendar.js' %}"></script>
 {% endblock %}

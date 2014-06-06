@@ -16,13 +16,13 @@ class PresentismoForm(PasajeroBaseForm):
 
 
 class ConformidadForm(PasajeroBaseForm):
-    dia_emision = forms.DateField(widget=forms.HiddenInput)
+    fecha_emision = forms.DateField(widget=forms.HiddenInput)
 
 
 class PresupuestoForm(forms.Form):
-    dia_emision = forms.DateField()
-    mes_inicio = forms.DateField()
-    mes_fin = forms.DateField()
+    fecha_emision = forms.DateField(widget=forms.HiddenInput)
+    mes_inicio = forms.DateField(widget=forms.HiddenInput)
+    mes_fin = forms.DateField(widget=forms.HiddenInput)
     pasajero = forms.ModelChoiceField(
         queryset=Pasajero.objects.all().order_by("apellido"),
         required=True)

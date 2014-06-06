@@ -69,10 +69,10 @@ def conformidad(request):
     if request.method == 'POST':
         form = ConformidadForm(request.POST)
         if form.is_valid():
-            dia_emision = form.cleaned_data['dia_emision']
+            fecha_emision = form.cleaned_data['fecha_emision']
             pasajeros = form.cleaned_data['pasajeros']
 
-            context = {'dia_emision': dia_emision,
+            context = {'fecha_emision': fecha_emision,
                         'pasajeros': pasajeros,
                         }
             return render(request, 'ambulancia/conformidad.html', context)
@@ -85,8 +85,9 @@ def presupuesto(request):
     if request.method == 'POST':
         form = PresupuestoForm(request.POST)
         if form.is_valid():
+            print("Llego")
             pasajero = form.cleaned_data['pasajero']
-            dia_emision = form.cleaned_data['dia_emision']
+            fecha_emision = form.cleaned_data['fecha_emision']
             mes_inicio = form.cleaned_data['mes_inicio']
             mes_fin = form.cleaned_data['mes_fin']
 
@@ -95,11 +96,10 @@ def presupuesto(request):
             elif pasajero.tipo_viaje == 'A':
                 valor_dia = pasajero.obra_social.precio_ambulancia_dia
             else:
-                valor_dia = pasajero.obra_social.\
-                                precio_ambulancia_dia_con_silla
+                valor_dia = pasajero.obra_social.precio_ambulancia_dia_silla
 
             context = {'pasajero': pasajero,
-                    'dia_emision': dia_emision,
+                    'fecha_emision': fecha_emision,
                     'mes_inicio': mes_inicio,
                     'mes_fin': mes_fin,
                     'valor_dia': valor_dia,
