@@ -1,9 +1,18 @@
 {% extends "gestion_pasajeros/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Nueva Obra Social
+{% endblock %}
+
+{% block header %}
+    Nueva Obra Social
+{% endblock %}
 
 {% block cuerpo %}
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" />
+        {{ form | crispy }}
+        <button type='submit' class="btn btn-primary">Aceptar</button>
     </form>
 {% endblock %}

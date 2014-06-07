@@ -1,0 +1,39 @@
+{% extends 'gestion_pasajeros/base.html' %}
+
+{% block title %}
+    Obras Sociales
+{% endblock %}
+
+{% block header %}
+    Obras Sociales
+{% endblock %}
+
+{% block cuerpo %}
+    {% if obra_sociales %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Precio KM</td>
+                    <td>Precio Día</td>
+                    <td>Precio Silla</td>
+                </tr>
+            <thead>
+            <tbody>
+                {% for obra_social in obra_sociales %}
+                    <tr>
+                        <td>{{ obra_social.nombre }}</td>
+                        <td>{{ obra_social.precio_km }}</td>
+                        <td>{{ obra_social.precio_ambulancia_dia }}</td>
+                        <td>{{ obra_social.precio_ambulancia_dia_silla }}</td>
+                        <td><a class="btn btn-warning" href="{{ obra_social.id }}/edit">Editar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="jumbotron">
+            <h2>No existen Obras Sociales cargadas en el sistema</h2>
+        </div>
+    {% endif %}
+{% endblock %}

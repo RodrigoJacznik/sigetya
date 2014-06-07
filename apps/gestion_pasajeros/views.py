@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 
 from .models import Establecimiento
 from .models import Pasajero
+from .models import ObraSocial
 
 from .forms import PresentismoForm
 from .forms import PasajeroForm
@@ -174,7 +175,9 @@ def new_obra_social(request):
 
 
 def list_obra_social(request):
-    pass
+    obra_sociales = ObraSocial.objects.all()
+    return render(request, 'gestion_pasajeros/obra_social/list.html',
+        {'obra_sociales': obra_sociales})
 
 # ---------------------------- Establecimiento ----------------------------
 
@@ -194,4 +197,6 @@ def new_establecimiento(request):
 
 
 def list_establecimiento(request):
-    pass
+    establecimientos = Establecimiento.objects.all().order_by("nombre")
+    return render(request, 'gestion_pasajeros/establecimiento/list.html',
+        {'establecimientos': establecimientos})

@@ -1,0 +1,41 @@
+{% extends 'gestion_pasajeros/base.html' %}
+
+{% block title %}
+    Establecimientos
+{% endblock %}
+
+{% block header %}
+    Establecimientos
+{% endblock %}
+
+{% block cuerpo %}
+    {% if establecimientos %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>direccion</td>
+                    <td>telefono</td>
+                    <td>Hora de Entrada</td>
+                    <td>Hora de Salida</td>
+                </tr>
+            <thead>
+            <tbody>
+                {% for establecimiento in establecimientos %}
+                    <tr>
+                        <td>{{ establecimiento.nombre }}</td>
+                        <td>{{ establecimiento.direccion }}</td>
+                        <td>{{ establecimiento.telefono }}</td>
+                        <td>{{ establecimiento.hora_entrada }}</td>
+                        <td>{{ establecimiento.hora_salida }}</td>
+                        <td><a class="btn btn-warning" href="{{ establecimiento.id }}/edit">Editar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="jumbotron">
+            <h2>No existen Establecimientos cargadas en el sistema</h2>
+        </div>
+    {% endif %}
+{% endblock %}
