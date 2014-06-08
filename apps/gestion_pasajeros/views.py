@@ -154,9 +154,10 @@ def list_pasajeros(request):
 
 
 def delete_pasajero(request, id):
+    print(id)
     p = get_object_or_404(Pasajero, pk=id)
     p.delete()
-    return redirect(redirect("index"))
+    return redirect(reverse("list_pasajero"))
 
 # ---------------------------- Obra Social --------------------------------
 
@@ -166,12 +167,23 @@ def new_obra_social(request):
         form = ObraSocialForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(redirect("index"))
+            return redirect(reverse("list_obra_social"))
     else:
         form = ObraSocialForm()
 
     return render(request, 'gestion_pasajeros/obra_social/new.html',
          {'form': form})
+
+
+def edit_obra_social(request, id):
+    o = get_object_or_404(ObraSocial, pk=id)
+    form = ObraSocialForm(request.POST or None, instance=o)
+    if form.is_valid():
+        form.save()
+        return redirect(reverse("list_obra_social"))
+
+    return render(request, 'gestion_pasajeros/obra_social/new.html',
+     {'form': form})
 
 
 def list_obra_social(request):
@@ -187,7 +199,7 @@ def new_establecimiento(request):
         form = EstablecimientoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(redirect("index"))
+            return redirect(reverse("list_establecimiento"))
     else:
         form = EstablecimientoForm()
 

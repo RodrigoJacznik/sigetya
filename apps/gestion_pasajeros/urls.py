@@ -23,5 +23,7 @@ urlpatterns = patterns('apps.gestion_pasajeros.views',
     # Obras Sociales
     url(r'obrasocial/$', 'list_obra_social', name='list_obra_social'),
     url(r'obrasocial/new/$', 'new_obra_social', name='new_obra_social'),
+    url(r'obrasocial/(?P<id>[0-9]+)/edit/$', 'edit_obra_social',
+         name='edit_obra_social'),
 
     )
