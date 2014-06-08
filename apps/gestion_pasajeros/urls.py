@@ -18,6 +18,8 @@ urlpatterns = patterns('apps.gestion_pasajeros.views',
          name='list_establecimiento'),
     url(r'^establecimiento/new/$', 'new_establecimiento',
          name='new_establecimiento'),
+    url(r'^establecimiento/(?P<id>[0-9]+)/edit/$', 'edit_establecimiento',
+         name='edit_establecimiento'),
 
 
     # Obras Sociales

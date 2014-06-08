@@ -208,6 +208,17 @@ def new_establecimiento(request):
                  {'form': form})
 
 
+def edit_establecimiento(request, id):
+    e = get_object_or_404(Establecimiento, pk=id)
+    form = EstablecimientoForm(request.POST or None, instance=e)
+    if form.is_valid():
+        form.save()
+        return redirect(reverse("list_establecimiento"))
+
+    return render(request, 'gestion_pasajeros/establecimiento/new.html',
+         {'form': form})
+
+
 def list_establecimiento(request):
     establecimientos = Establecimiento.objects.all().order_by("nombre")
     return render(request, 'gestion_pasajeros/establecimiento/list.html',
