@@ -1,4 +1,5 @@
 {% extends 'gestion_pasajeros/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     Obras Sociales
@@ -36,4 +37,8 @@
             <h2>No existen Obras Sociales cargadas en el sistema</h2>
         </div>
     {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'gestion_pasajeros/js/list_table.js' %}"></script>
 {% endblock %}

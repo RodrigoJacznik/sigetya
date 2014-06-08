@@ -1,4 +1,5 @@
 {% extends "gestion_pasajeros/base.html" %}
+{% load staticfiles %}
 
 {% block header %}
     Lista de Pasajeros
@@ -42,14 +43,5 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script>
-        $("tbody tr").hover(
-            function() {
-                 $(this).toggleClass("active")
-            },
-            function() {
-                 $(this).toggleClass("active")
-            }
-        );
-    </script>
+    <script src="{% static 'gestion_pasajeros/js/list_table.js' %}"></script>
 {% endblock %}
