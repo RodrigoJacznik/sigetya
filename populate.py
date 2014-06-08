@@ -21,8 +21,19 @@ def populate():
                             hora_entrada='11:00',
                             hora_salida='17:30')
 
+    responsable1 = add_responsable(nombre='Fito',
+                                apellido='Garcia',
+                                dni='1111111111',
+                                tipo_trasporte='A')
+
+    responsable2 = add_responsable(nombre='Gustavo',
+                                apellido='Perez',
+                                dni='33333333333',
+                                tipo_trasporte='A')
+
     add_pasajero(nro_obra_social='1111111111',
                         obra_social=obra_social1,
+                        responsable=responsable1,
                         establecimiento=establecimiento1,
                         nombre='Pepe',
                         apellido='Grillo',
@@ -36,6 +47,7 @@ def populate():
 
     add_pasajero(nro_obra_social='2222222222',
                         obra_social=obra_social1,
+                        responsable=responsable1,
                         establecimiento=establecimiento1,
                         nombre='Jose',
                         apellido='Grillo',
@@ -49,6 +61,7 @@ def populate():
 
     add_pasajero(nro_obra_social='333333333333',
                         obra_social=obra_social1,
+                        responsable=responsable2,
                         establecimiento=establecimiento2,
                         nombre='Pepa',
                         apellido='Apellido',
@@ -62,6 +75,7 @@ def populate():
 
     add_pasajero(nro_obra_social='44444444444444',
                     obra_social=obra_social1,
+                    responsable=responsable2,
                     establecimiento=establecimiento2,
                     nombre='Nombre',
                     apellido='Apellido',
@@ -79,6 +93,11 @@ def add_obra_social(*args, **kwargs):
     return o
 
 
+def add_responsable(*args, **kwargs):
+    r = Responsable.objects.get_or_create(**kwargs)[0]
+    return r
+
+
 def add_establecimiento(*args, **kwargs):
     e = Establecimiento.objects.get_or_create(**kwargs)[0]
     return e
@@ -89,8 +108,9 @@ def add_pasajero(*args, **kwargs):
     return p
 
 if __name__ == '__main__':
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'trasporte.settings')
-    from apps.ambulancia.models import ObraSocial
-    from apps.ambulancia.models import Establecimiento
-    from apps.ambulancia.models import Pasajero
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sigetya.settings')
+    from apps.gestion_pasajeros.models import ObraSocial
+    from apps.gestion_pasajeros.models import Establecimiento
+    from apps.gestion_pasajeros.models import Pasajero
+    from apps.gestion_pasajeros.models import Responsable
     populate()
