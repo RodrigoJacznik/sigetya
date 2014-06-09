@@ -1,0 +1,62 @@
+{% extends 'gestion_pasajeros/base.html' %}
+
+{% block title %}
+    {{ pasajero.nombre }} {{ pasajero.apellido }}
+{% endblock %}
+
+{% block header %}
+    {{ pasajero.nombre }} {{ pasajero.apellido }}
+{% endblock %}
+
+{% block cuerpo %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dato</th>
+                <th>Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Nombre y apellido</th>
+                <td>{{ pasajero.nombre }} {{ pasajero.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{{ pasajero.get_sexo_display }}</td>
+            </tr>
+            <tr>
+                <th>Obra Social</th>
+                <td>{{ pasajero.obra_social }}</a></td>
+            </tr>
+            <tr>
+                <th>Responsable</th>
+                <td>{{ pasajero.responsable }}</td>
+            </tr>
+            <tr>
+                <th>Establecimiento</th>
+                <td>{{ pasajero.establecimiento }}</td>
+            </tr>
+            <tr>
+                <th>Hora de Entrada</th>
+                <td>{{ pasajero.hora_entrada }}</td>
+            </tr>
+            <tr>
+                <th>Hora de Salida</th>
+                <td>{{ pasajero.hora_salida }}</td>
+            </tr>
+            <tr>
+                <th>Tipo de Traslado</th>
+                <td>{{ pasajero.get_tipo_viaje_display }}</td>
+            </tr>
+            <tr>
+                <th>Nombre del padre</th>
+                <td>{{ pasajero.nombre_padre }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ pasajero.telefono }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
