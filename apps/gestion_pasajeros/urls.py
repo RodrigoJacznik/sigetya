@@ -8,6 +8,8 @@ urlpatterns = patterns('apps.gestion_pasajeros.views',
     # Pasajeros
     url(r'^pasajero/$', 'list_pasajeros', name='list_pasajero'),
     url(r'^pasajero/new/$', 'new_pasajero', name='new_pasajero'),
+    url(r'^pasajero/(?P<id>[0-9]+)/$',
+         'detail_pasajero', name='detail_pasajero'),
     url(r'^pasajero/(?P<id>[0-9]+)/delete/$',
          'delete_pasajero', name='delete_pasajero'),
     url(r'^pasajero/(?P<id>[0-9]+)/edit/$',

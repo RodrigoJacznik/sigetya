@@ -136,6 +136,12 @@ def new_pasajero(request):
         'establecimientos': establecimientos})
 
 
+def detail_pasajero(request, id):
+    pasajero = get_object_or_404(Pasajero, pk=id)
+    return render(request, 'gestion_pasajeros/pasajero/detail.html',
+         {'pasajero': pasajero})
+
+
 def edit_pasajero(request, id):
     p = get_object_or_404(Pasajero, pk=id)
     form = PasajeroForm(request.POST or None, instance=p)
