@@ -156,7 +156,7 @@ def edit_pasajero(request, id):
 def list_pasajeros(request):
     return render(request,
                  'gestion_pasajeros/pasajero/list.html',
-                 {'pasajeros': Pasajero.objects.all()})
+                 {'pasajeros': Pasajero.objects.all().order_by("apellido")})
 
 
 def delete_pasajero(request, id):
