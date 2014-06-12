@@ -7,6 +7,7 @@
         <style>
             body {
                 font-family: Sans-serif;
+                font-size: 18px;
                 width: 21cm;
                 margin-left: auto;
                 margin-right: auto;
@@ -20,13 +21,14 @@
                 text-align: center;
             }
 
+            #cuerpo {
+                text-align: justify;
+            }
+
             #valor {
                 margin-left: 50px;
             }
 
-            img {
-                align: middle;
-            }
         </style>
     </head>
     <body>
@@ -41,15 +43,15 @@
         <div id="cuerpo">
             <p>Por el traslado {% if pasajero.sexo == "M" %} del alumno {% else %} de la alumna
             {% endif %} <b>{{ pasajero | upper }}</b> desde {{ pasajero.direccion }} hasta
-            {{ pasajero.escuela.direccion }} ( {{ pasajero.escuela }} ) y de regreso a su domicilo.
+            {{ pasajero.establecimiento.direccion }} ( {{ pasajero.establecimiento }} ) y de regreso a su domicilo.
             De Lunes a Viernes, de {{ mes_inicio | date:"F"}} a {{ mes_fin | date:"F"}}.
-            {% if pasajero.tipo_viaje == "AS" %} Traslado en silla de rueda {% endif %}</p>
+            {% if pasajero.tipo_viaje == "AS" %} Traslado en silla de rueda{% endif %}.</p>
         </div>
         <div>
             <p>Según valor {{  pasajero.obra_social }}:</p>
             <div id="valor">
-                <p>Valor por dia: {{ valor_dia }}</p>
-                <p>Valor por mes: {{ valor_mes }}</p>
+                <p>Valor por día: $ {{ valor_dia }}.00</p>
+                <p>Valor por mes: $ {{ valor_mes }}.00</p>
             </div>
         </div>
     </body>
