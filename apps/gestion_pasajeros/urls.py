@@ -8,11 +8,11 @@ urlpatterns = patterns('apps.gestion_pasajeros.views',
     # Pasajeros
     url(r'^pasajero/$', 'list_pasajeros', name='list_pasajero'),
     url(r'^pasajero/new/$', 'new_pasajero', name='new_pasajero'),
-    url(r'^pasajero/(?P<id>[0-9]+)/$',
+    url(r'^pasajero/(?P<id>\w?\d+)/$',
          'detail_pasajero', name='detail_pasajero'),
-    url(r'^pasajero/(?P<id>[0-9]+)/delete/$',
+    url(r'^pasajero/(?P<id>\w?\d+)/delete/$',
          'delete_pasajero', name='delete_pasajero'),
-    url(r'^pasajero/(?P<id>[0-9]+)/edit/$',
+    url(r'^pasajero/(?P<id>\w?\d+)/edit/$',
          'edit_pasajero', name='edit_pasajero'),
 
     # Establecimientos
@@ -20,14 +20,14 @@ urlpatterns = patterns('apps.gestion_pasajeros.views',
          name='list_establecimiento'),
     url(r'^establecimiento/new/$', 'new_establecimiento',
          name='new_establecimiento'),
-    url(r'^establecimiento/(?P<id>[0-9]+)/edit/$', 'edit_establecimiento',
+    url(r'^establecimiento/(?P<id>\w?\d+)/edit/$', 'edit_establecimiento',
          name='edit_establecimiento'),
 
 
     # Obras Sociales
     url(r'obrasocial/$', 'list_obra_social', name='list_obra_social'),
     url(r'obrasocial/new/$', 'new_obra_social', name='new_obra_social'),
-    url(r'obrasocial/(?P<id>[0-9]+)/edit/$', 'edit_obra_social',
+    url(r'obrasocial/(?P<id>\d+)/edit/$', 'edit_obra_social',
          name='edit_obra_social'),
 
     )

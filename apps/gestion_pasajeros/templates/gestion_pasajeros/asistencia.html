@@ -4,7 +4,7 @@
 <html>
     <head>
         <title>Planilla de asistencia</title>
-        <link rel="stylesheet" href="{% static 'gestion_pasajeros/css/asistencia.css' %}"
+        <link rel="stylesheet" href="http://localhost:8000{% static 'gestion_pasajeros/css/asistencia.css' %}" />
     </head>
     <body>
         {% for pasajero in pasajeros %}
@@ -54,8 +54,9 @@
                 <p>N° DOCUMENTO: _______________________________________</p>
                 <p>GRADO DE PARENTESCO: ________________________________</p>
             </div>
-
-            <div class="page-break"></div>
+            {% if not forloop.last %}
+                <div class="page-break"></div>
+            {% endif %}
         {% endfor %}
     </body>
 </html>

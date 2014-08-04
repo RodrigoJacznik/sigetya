@@ -1,6 +1,6 @@
 body {
-    font-familt: Sans-serif;
-    font-size: 13px;
+    font-family: serif;
+    font-size: 12px;
     }
 
 table {
@@ -15,17 +15,9 @@ td {
     font-size: 12px;
     }
 
-tr {
-    margin: 0.5px;
-    }
 
 #datos {
     width: 580px;
-    }
-
-#datos div {
-    margin-bottom: -10px;
-    margin-top: -10px;
     }
 
 #datos div p {
@@ -47,5 +39,9 @@ tr {
 @media print {
     .page-break{
         page-break-before: always;
+    }
+    @page {
+        size: A4;
+        margin: 0 2cm;
     }
 }

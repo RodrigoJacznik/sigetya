@@ -1,3 +1,10 @@
+import weasyprint
+
+from django.template import Context
+from django.template import loader
+
+from django.http import HttpResponse
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
@@ -60,8 +67,15 @@ def asistencia(request):
 
             context = {'month': month, 'days': days,
                 'pasajeros': form.cleaned_data['pasajeros']}
-            return render(request,
-                'gestion_pasajeros/asistencia.html', context)
+
+            template = loader.get_template("gestion_pasajeros/asistencia.html")
+            html = template.render(Context(context))
+            response = HttpResponse(mimetype="application/pdf")
+            weasyprint.HTML(string=html, ).write_pdf(response)
+
+            return response
+            #return render(request,
+             #   'gestion_pasajeros/asistencia.html', context)
     else:
         form = PresentismoForm()
     return render(request, 'gestion_pasajeros/new_asistencia.html',
