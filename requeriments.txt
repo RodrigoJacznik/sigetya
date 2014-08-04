@@ -1,2 +1,17 @@
+CairoSVG==1.0.8
 Django==1.6.4
+Pillow==2.5.1
+PyPDF2==1.22
+Pyphen==0.9.1
 South==0.8.4
+WeasyPrint==0.22
+cairocffi==0.5.4
+cffi==0.8.6
+cssselect==0.9.1
+django-crispy-forms==1.4.0
+html5lib==0.999
+lxml==3.3.5
+pycparser==2.10
+six==1.7.3
+tinycss==0.3
+xhtml2pdf==0.0.6
