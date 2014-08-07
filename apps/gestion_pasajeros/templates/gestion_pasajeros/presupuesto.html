@@ -7,10 +7,11 @@
         <style>
             body {
                 font-family: Sans-serif;
-                font-size: 18px;
-                width: 21cm;
-                margin-left: auto;
-                margin-right: auto;
+                font-size: 14px;
+            }
+
+            @page {
+                size: A4;
             }
 
             #fecha {
@@ -19,6 +20,7 @@
 
             #titulo {
                 text-align: center;
+                font-size: 18px
             }
 
             #cuerpo {
@@ -32,7 +34,7 @@
         </style>
     </head>
     <body>
-        <img src="{% static 'gestion_pasajeros/img/encabezado.svg' %}"></img>
+        <img src="http://localhost:8000{% static 'gestion_pasajeros/img/encabezado.svg' %}"></img>
         <div>
               <p id="fecha">La Plata, {{ fecha_emision | date:"j" }} de {{ fecha_emision | date:"F" }} de {{ fecha_emision | date:"Y" }} </p>
         </div>
@@ -43,9 +45,9 @@
         <div id="cuerpo">
             <p>Por el traslado {% if pasajero.sexo == "M" %} del alumno {% else %} de la alumna
             {% endif %} <b>{{ pasajero | upper }}</b> desde {{ pasajero.direccion }} hasta
-            {{ pasajero.establecimiento.direccion }} ( {{ pasajero.establecimiento }} ) y de regreso a su domicilo.
+            {{ pasajero.establecimiento.direccion }} ({{ pasajero.establecimiento }}) y de regreso a su domicilio.
             De Lunes a Viernes, de {{ mes_inicio | date:"F"}} a {{ mes_fin | date:"F"}}.
-            {% if pasajero.tipo_viaje == "AS" %} Traslado en silla de rueda{% endif %}.</p>
+            {% if pasajero.tipo_viaje == "AS" %} Traslado en silla de rueda.{% endif %}</p>
         </div>
         <div>
             <p>Según valor {{  pasajero.obra_social }}:</p>

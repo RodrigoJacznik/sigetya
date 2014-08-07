@@ -6,10 +6,9 @@ $( "#datepicker" ).multiDatesPicker({
     changeYear: true,
     addDates: selectHolydaysAndWeekends(new Date()),
     onChangeMonthYear: function(year, month) {
-        var date = new Date(year, month - 1, 1);
         $(this).multiDatesPicker('resetDates', 'picked');
         $(this).multiDatesPicker('addDates',
-            selectHolydaysAndWeekends(date));
+            selectHolydaysAndWeekends(new Date(year, month - 1, 1));
         document.getElementById('id_dates').value = $(this).multiDatesPicker('getDates');
     }
 });

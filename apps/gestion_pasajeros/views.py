@@ -125,8 +125,14 @@ def presupuesto(request):
                     'valor_mes': valor_dia * 22
                     }
 
-            return render(request, 'gestion_pasajeros/presupuesto.html',
-                 context)
+            template = loader.get_template("gestion_pasajeros/presupuesto.html")
+            html = template.render(Context(context))
+            response = HttpResponse(mimetype="application/pdf")
+            weasyprint.HTML(string=html, ).write_pdf(response)
+
+            return response
+#            return render(request, 'gestion_pasajeros/presupuesto.html',
+#                 context)
     else:
         form = PresupuestoForm()
     return render(request, 'gestion_pasajeros/new_presupuesto.html',

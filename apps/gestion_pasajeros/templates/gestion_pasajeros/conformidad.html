@@ -26,7 +26,7 @@
                 <p>La Plata, {{ fecha_emision | date:"j" }} de {{ fecha_emision | date:"F" }} de {{ fecha_emision | date:"Y" }} </p>
             </div>
             <div id="cuerpo">
-                <p>Por la presente doy conformidad al traslado de mi
+                <p>Por la presente doy conformidad al translado de mi
                  hij{% if pasajero.sexo == 'M' %}o{% else %}a{% endif %} {{ pasajero | upper }}
                  por
                  {% if pasajero.responsable.tipo_trasporte == 'A' %}
