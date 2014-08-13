@@ -4,37 +4,9 @@
 <html>
     <head>
         <title>Presupuesto</title>
-        <style>
-            body {
-                font-family: Sans-serif;
-                font-size: 14px;
-            }
-
-            @page {
-                size: A4;
-            }
-
-            #fecha {
-                text-align: right;
-            }
-
-            #titulo {
-                text-align: center;
-                font-size: 18px
-            }
-
-            #cuerpo {
-                text-align: justify;
-            }
-
-            #valor {
-                margin-left: 50px;
-            }
-
-        </style>
     </head>
     <body>
-        <img src="http://localhost:8000{% static 'gestion_pasajeros/img/encabezado.svg' %}"></img>
+        <img src="{{ BASE_URL  }}{% static 'gestion_pasajeros/img/encabezado.svg' %}"></img>
         <div>
               <p id="fecha">La Plata, {{ fecha_emision | date:"j" }} de {{ fecha_emision | date:"F" }} de {{ fecha_emision | date:"Y" }} </p>
         </div>

@@ -1,7 +1,9 @@
-import weasyprint
+from  weasyprint import HTML, CSS
 
 from django.template import Context
 from django.template import loader
+
+from django.templatetags.static import static
 
 from django.http import HttpResponse
 
@@ -71,11 +73,11 @@ def asistencia(request):
             template = loader.get_template("gestion_pasajeros/asistencia.html")
             html = template.render(Context(context))
             response = HttpResponse(mimetype="application/pdf")
-            weasyprint.HTML(string=html, ).write_pdf(response)
+            HTML(string=html).write_pdf(response,
+                    stylesheets=[CSS('http://' + request.get_host() + 
+                        static('gestion_pasajeros/css/asistencia.css'))])
 
             return response
-            #return render(request,
-             #   'gestion_pasajeros/asistencia.html', context)
     else:
         form = PresentismoForm()
     return render(request, 'gestion_pasajeros/new_asistencia.html',
@@ -122,13 +124,16 @@ def presupuesto(request):
                     'mes_inicio': mes_inicio,
                     'mes_fin': mes_fin,
                     'valor_dia': valor_dia,
-                    'valor_mes': valor_dia * 22
+                    'valor_mes': valor_dia * 22,
+                    'BASE_URL': 'http://' + request.get_host()
                     }
 
             template = loader.get_template("gestion_pasajeros/presupuesto.html")
             html = template.render(Context(context))
             response = HttpResponse(mimetype="application/pdf")
-            weasyprint.HTML(string=html, ).write_pdf(response)
+            HTML(string=html).write_pdf(response,
+                    stylesheets=[CSS('http://' + request.get_host() +
+                        static('gestion_pasajeros/css/presupuesto.css'))])
 
             return response
 #            return render(request, 'gestion_pasajeros/presupuesto.html',

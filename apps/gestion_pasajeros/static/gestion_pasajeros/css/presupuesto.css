@@ -1,0 +1,26 @@
+body {
+    font-family: Sans-serif;
+    font-size: 14px;
+}
+
+@page {
+    size: A4;
+}
+
+#fecha {
+    text-align: right;
+}
+
+#titulo {
+    text-align: center;
+    font-size: 18px
+}
+
+#cuerpo {
+    text-align: justify;
+}
+
+#valor {
+    margin-left: 50px;
+}
+
